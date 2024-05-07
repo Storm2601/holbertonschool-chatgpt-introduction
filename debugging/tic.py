@@ -1,8 +1,10 @@
 #!/usr/bin/python3
+
 def print_board(board):
     for row in board:
         print(" | ".join(row))
         print("-" * 5)
+
 
 def check_winner(board):
     for row in board:
@@ -40,5 +42,6 @@ def tic_tac_toe():
 
     print_board(board)
     print("Player " + player + " wins!")
+
 
 tic_tac_toe()
