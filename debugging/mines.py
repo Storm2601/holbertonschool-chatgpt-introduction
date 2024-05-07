@@ -11,7 +11,8 @@ class Minesweeper:
     def __init__(self, width=10, height=10, mines=10):
         self.width = width
         self.height = height
-        self.mines = set(random.sample(range(width * height), mines))
+        self.total_cells = width * height
+        self.mines = set(random.sample(range(self.total_cells), mines))
         self.field = [[' ' for _ in range(width)] for _ in range(height)]
         self.revealed = [[False for _ in range(width)] for _ in range(height)]
 
@@ -42,8 +43,6 @@ class Minesweeper:
         return count
 
     def reveal(self, x, y):
-        if x < 0 or x >= self.width or y < 0 or y >= self.height:
-            return True  # Coordonnées invalides, rien ne se passe
         if (y * self.width + x) in self.mines:
             return False
         self.revealed[y][x] = True
@@ -58,6 +57,10 @@ class Minesweeper:
                         self.reveal(nx, ny)
         return True
 
+    def is_game_over(self):
+        total_revealed = sum(sum(row) for row in self.revealed)
+        return total_revealed == self.total_cells - len(self.mines)
+
     def play(self):
         while True:
             self.print_board()
@@ -67,6 +70,10 @@ class Minesweeper:
                 if not self.reveal(x, y):
                     self.print_board(reveal=True)
                     print("Game Over! You hit a mine.")
+                    break
+                if self.is_game_over():
+                    self.print_board(reveal=True)
+                    print("Congratulations! You've won the game.")
                     break
             except ValueError:
                 print("Invalid input. Please enter numbers only.")
