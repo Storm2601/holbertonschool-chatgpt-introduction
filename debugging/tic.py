@@ -12,7 +12,10 @@ def check_winner(board):
             return True
 
     for col in range(len(board[0])):
-        if board[0][col] == board[1][col] == board[2][col] and board[0][col] != " ":
+        if (
+            board[0][col] == board[1][col] == board[2][col] and
+            board[0][col] != " "
+        ):
             return True
 
     if board[0][0] == board[1][1] == board[2][2] and board[0][0] != " ":
@@ -30,7 +33,8 @@ def tic_tac_toe():
     while not check_winner(board):
         print_board(board)
         row = int(input("Enter row (0, 1, or 2) for player " + player + ": "))
-        col = int(input("Enter column (0, 1, or 2) for player " + player + ": "))
+        col = int(input(
+            f"Enter column (0, 1, or 2) for player " + player + ": "))
         if board[row][col] == " ":
             board[row][col] = player
             if player == "X":
@@ -42,6 +46,11 @@ def tic_tac_toe():
 
     print_board(board)
     print("Player " + player + " wins!")
+
+
+def new_func(player):
+    col = int(input("Enter column (0, 1, or 2) for player " + player + ": "))
+    return col
 
 
 tic_tac_toe()
