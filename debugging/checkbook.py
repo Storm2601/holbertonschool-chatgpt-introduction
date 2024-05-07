@@ -1,13 +1,14 @@
 #!/usr/bin/python3
+
 class Checkbook:
     """
-    Cette classe représente un carnet de chèques permettant de déposer, retirer de l'argent
+    Cette classe représente un carnet de chèques permettant de déposer,
+    retirer de l'argent
     et consulter le solde actuel.
 
     Attributes:
         balance (float): Le solde actuel du carnet de chèques.
     """
-
     def __init__(self):
         self.balance = 0.0
 
@@ -24,7 +25,8 @@ class Checkbook:
 
     def withdraw(self, amount):
         """
-        Retire un montant spécifié du carnet de chèques, si les fonds sont suffisants.
+        Retire un montant spécifié du carnet de chèques, si les fonds
+        sont suffisants.
 
         Args:
             amount (float): Le montant à retirer.
@@ -40,13 +42,15 @@ class Checkbook:
         """Affiche le solde actuel du carnet de chèques."""
         print("Current Balance: ${:.2f}".format(self.balance))
 
+
 def main():
     """
     Fonction principale pour interagir avec le carnet de chèques.
     """
     cb = Checkbook()
     while True:
-        action = input("What would you like to do? (deposit, withdraw, balance, exit): ")
+        action = input("What would you like to do?
+                       (deposit, withdraw, balance, exit): ")
         if action.lower() == 'exit':
             break
         elif action.lower() == 'deposit':
@@ -59,6 +63,7 @@ def main():
             cb.get_balance()
         else:
             print("Invalid command. Please try again.")
+
 
 if __name__ == "__main__":
     main()
