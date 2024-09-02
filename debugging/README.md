@@ -1,1 +1,1 @@
-Porject ChatGPT - Introduction
+Project ChatGPT - Introduction
