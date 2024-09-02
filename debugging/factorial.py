@@ -3,22 +3,19 @@ import sys
 
 def factorial(n):
     if n < 0:
-        raise ValueError("Factorial is not defined for negative integers.")
+        raise ValueError("The factorial is not defined for negative numbers")
     result = 1
     while n > 1:
         result *= n
         n -= 1
     return result
 
-# Print only the arguments passed via command line, excluding the script name
-for arg in sys.argv[1:]:
-    print(arg)
-
-# Calculate the factorial of the first argument if provided
-if len(sys.argv) > 1:
+if __name__ == "__main__":
     try:
-        number = int(sys.argv[1])
-        f = factorial(number)
-        print(f"Factorial of {number} is {f}")
+        if len(sys.argv) != 2:
+            raise ValueError("Please provide exactly one argument")
+        n = int(sys.argv[1])
+        f = factorial(n)
+        print(f)
     except ValueError as e:
-        print(f"Error: {e}")
+        print(f"Error : {e}")
